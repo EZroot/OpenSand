@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "pdpGz+bBDPDyxjWfNu5hKxlggIEbfyOveHApvZ/ldYIh9VakcDIhp6qf77cTJ1Vpi+ORt9kiVg2rdi2/Giz50w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ezroot\\Desktop\\Dev\\OpenSand\\OpenSand.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ezroot\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.0.1641\\monogame.framework.desktopgl.3.8.0.1641.nupkg.sha512"
+  ],
+  "logs": []
+}
