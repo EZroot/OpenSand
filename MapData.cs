@@ -25,7 +25,7 @@ namespace OpenSandGame.Core
             // Create the canvas pixel array.
             _canvasPixels = new Color[Width * Height];
             _canvasPixelSavedData = new Color[Width * Height];
-
+            
             // Create the canvas texture.
             _canvasSimulationTexture = new Texture2D(graphics.GraphicsDevice, Width, Height);
 

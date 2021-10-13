@@ -17,12 +17,15 @@ namespace OpenSandGame.Core
         MapData mapData;
         Texture2D pixelData;
 
+        GraphicsDeviceManager graphicsRef;
+
         public CoreEngine(int width, int height, int scale, GraphicsDeviceManager graphics)
         {
             Width = width;
             Height = height;
             Scale = scale;
             mapData = new MapData(width, height, scale, graphics);
+            graphicsRef = graphics;
         }
 
         public CoreEngine(GraphicsDeviceManager graphics)
@@ -31,11 +34,13 @@ namespace OpenSandGame.Core
             Height = 128;
             Scale = 4;
             mapData = new MapData(graphics);
+            graphicsRef = graphics;
         }
 
         public void UpdateSimulation(GameTime gameTime)
         {
             MouseState mouseState = Mouse.GetState();
+        
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
                 float PI = 3.14f;
@@ -44,9 +49,9 @@ namespace OpenSandGame.Core
                 for (i = 0; i < 360; i++)
                 {
                     angle = i;
-                    x1 = 4f * MathF.Cos(angle * PI / 180f);
-                    y1 = 4f * MathF.Sin(angle * PI / 180f);
-                    mapData.SetPixel(mouseState.X + (int)x1, mouseState.Y + (int)y1, 6);
+                    x1 = 6f * MathF.Cos(angle * PI / 180f);
+                    y1 = 6f * MathF.Sin(angle * PI / 180f);
+                    mapData.SetPixel((int)(mouseState.X + x1), (int)(mouseState.Y + y1), 9);
                 }
             }
 
@@ -58,15 +63,24 @@ namespace OpenSandGame.Core
                 for (i = 0; i < 360; i++)
                 {
                     angle = i;
-                    x1 = 4f * MathF.Cos(angle * PI / 180f);
-                    y1 = 4f * MathF.Sin(angle * PI / 180f);
+                    x1 = 2f * MathF.Cos(angle * PI / 180f);
+                    y1 = 2f * MathF.Sin(angle * PI / 180f);
                     mapData.SetPixel(mouseState.X + (int)x1, mouseState.Y + (int)y1, 1);
                 }
             }
 
             if (mouseState.MiddleButton == ButtonState.Pressed)
             {
-                mapData.SetPixel(mouseState.X - (mouseState.X / 4), mouseState.Y - (mouseState.Y / 4), 4);
+                float PI = 3.14f;
+                float i, angle, x1, y1;
+
+                for (i = 0; i < 360; i++)
+                {
+                    angle = i;
+                    x1 = 1f * MathF.Cos(angle * PI / 180f);
+                    y1 = 2f * MathF.Sin(angle * PI / 180f);
+                    mapData.SetPixel(mouseState.X + (int)x1, mouseState.Y + (int)y1, 5); //4 is wood, 5 is darker, cooler looking wood
+                }
             }
 
             currentTime += (float)gameTime.ElapsedGameTime.TotalSeconds; //Time passed since last Update() 
@@ -91,31 +105,31 @@ namespace OpenSandGame.Core
                         //0 = air
 
                         //Sand
-                        if (pixel == 6)
+                        if (pixel == 9)
                         {
                             //if below == water tile
                             if (mapData.GetPixel(j, i + 1) == 1)
                             {
                                 mapData.SetPixel(j, i, 1);
-                                mapData.SetPixel(j, i + 1, 6);
+                                mapData.SetPixel(j, i + 1, 9);
                             }
                             //if below empty
                             else if (mapData.GetSavedPixel(j, i + 1) < 1)
                             {
                                 mapData.SetPixel(j, i, 0);
-                                mapData.SetPixel(j, i + 1, 6);
+                                mapData.SetPixel(j, i + 1, 9);
                             }
                             //bottom right
                             else if (mapData.GetSavedPixel(j + 1, i + 1) < 1)
                             {
                                 mapData.SetPixel(j, i, 0);
-                                mapData.SetPixel(j + 1, i + 1, 6);
+                                mapData.SetPixel(j + 1, i + 1, 9);
                             }
                             //bottom left
                             else if (mapData.GetSavedPixel(j - 1, i + 1) < 1)
                             {
                                 mapData.SetPixel(j, i, 0);
-                                mapData.SetPixel(j - 1, i + 1, 6);
+                                mapData.SetPixel(j - 1, i + 1, 9);
                             }
                         }
 
@@ -174,12 +188,12 @@ namespace OpenSandGame.Core
 
         public void LoadContent()
         {
-            mapData.SetPixel(20, 23, 1); //sand
-            mapData.SetPixel(20, 22, 1); //sand
-            mapData.SetPixel(20, 20, 1); //sand
-            mapData.SetPixel(20, 17, 1); //sand
-            mapData.SetPixel(20, 15, 1); //sand
-            mapData.SetPixel(15, 12, 2); //water
+            for(int i =10;i<30;i++)
+                for(int j=10;j<30;j++)
+                    mapData.SetPixel(i, j, 9); //sand
+
+            for(int i=10;i<100;i++)
+                mapData.SetPixel(i,200,5);
 
             mapData.UpdateCanvas(); //draw our pixels after we changed data
         }
