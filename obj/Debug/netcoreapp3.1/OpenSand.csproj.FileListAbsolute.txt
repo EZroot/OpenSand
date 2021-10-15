@@ -13,11 +13,11 @@ C:\Users\ezroot\Desktop\Dev\OpenSand\bin\Debug\netcoreapp3.1\runtimes\win-x64\na
 C:\Users\ezroot\Desktop\Dev\OpenSand\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\soft_oal.dll
 C:\Users\ezroot\Desktop\Dev\OpenSand\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\SDL2.dll
 C:\Users\ezroot\Desktop\Dev\OpenSand\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\soft_oal.dll
-C:\Users\ezroot\Desktop\Dev\OpenSand\obj\Debug\netcoreapp3.1\OpenSand.csprojAssemblyReference.cache
 C:\Users\ezroot\Desktop\Dev\OpenSand\obj\Debug\netcoreapp3.1\OpenSand.AssemblyInfoInputs.cache
 C:\Users\ezroot\Desktop\Dev\OpenSand\obj\Debug\netcoreapp3.1\OpenSand.AssemblyInfo.cs
 C:\Users\ezroot\Desktop\Dev\OpenSand\obj\Debug\netcoreapp3.1\OpenSand.csproj.CoreCompileInputs.cache
-C:\Users\ezroot\Desktop\Dev\OpenSand\obj\Debug\netcoreapp3.1\OpenSand.csproj.CopyComplete
 C:\Users\ezroot\Desktop\Dev\OpenSand\obj\Debug\netcoreapp3.1\OpenSand.dll
 C:\Users\ezroot\Desktop\Dev\OpenSand\obj\Debug\netcoreapp3.1\OpenSand.pdb
 C:\Users\ezroot\Desktop\Dev\OpenSand\obj\Debug\netcoreapp3.1\OpenSand.genruntimeconfig.cache
+C:\Users\ezroot\Desktop\Dev\OpenSand\obj\Debug\netcoreapp3.1\OpenSand.csproj.AssemblyReference.cache
+C:\Users\ezroot\Desktop\Dev\OpenSand\obj\Debug\netcoreapp3.1\OpenSand.GeneratedMSBuildEditorConfig.editorconfig

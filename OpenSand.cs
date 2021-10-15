@@ -13,7 +13,7 @@ namespace OpenSandGame.Core
         private bool _dirty = false;
 
         CoreEngine coreEngine;
-
+        Camera camera;
         public OpenSand()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -27,13 +27,13 @@ namespace OpenSandGame.Core
             this.Window.Title = "Pixel Plotter";
 
             // Create out Simulation
-            coreEngine = new CoreEngine(256,256,2,graphics: _graphics);
+            coreEngine = new CoreEngine(200,200,1,graphics: _graphics);
             // Set the window size.
             _graphics.PreferredBackBufferWidth = coreEngine.Width * coreEngine.Scale;
             _graphics.PreferredBackBufferHeight = coreEngine.Height * coreEngine.Scale;
             _graphics.IsFullScreen = false;
             _graphics.ApplyChanges();
-
+            camera = new Camera(_graphics.GraphicsDevice.Viewport);
             // TODO: Add your initialization logic here
             base.Initialize();
         }
@@ -50,14 +50,14 @@ namespace OpenSandGame.Core
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
             
-            coreEngine.UpdateSimulation(gameTime);
+            coreEngine.UpdateSimulation(gameTime, camera, _graphics);
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-            _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp);
+            _spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, camera.GetTransform(_graphics.GraphicsDevice));
             this.Render();
             _spriteBatch.End();
             base.Draw(gameTime);
